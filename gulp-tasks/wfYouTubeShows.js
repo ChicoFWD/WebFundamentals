@@ -31,8 +31,8 @@ function buildFeeds(buildType, callback) {
     var context = {
       videos: [videoPlaceholder, videoPlaceholder, videoPlaceholder, videoPlaceholder]
     };
-    var template = path.join(GLOBAL.WF.src.templates, 'shows', 'index.md');
-    var outputFile = path.join(GLOBAL.WF.src.content, 'shows', 'index.md');
+    var template = path.join(global.WF.src.templates, 'shows', 'index.md');
+    var outputFile = path.join(global.WF.src.content, 'shows', 'index.md');
     wfTemplateHelper.renderTemplate(template, context, outputFile);
     callback();
     return;
@@ -79,15 +79,15 @@ function buildFeeds(buildType, callback) {
       var context = {
         videos: response.items
       };
-      var template = path.join(GLOBAL.WF.src.templates, 'shows', 'index.md');
-      var outputFile = path.join(GLOBAL.WF.src.content, 'shows', 'index.md');
+      var template = path.join(global.WF.src.templates, 'shows', 'index.md');
+      var outputFile = path.join(global.WF.src.content, 'shows', 'index.md');
       wfTemplateHelper.renderTemplate(template, context, outputFile);
 
       var context = {
         video: response.items[0]
       };
-      template = path.join(GLOBAL.WF.src.templates, 'shows', 'latest.html');
-      outputFile = path.join(GLOBAL.WF.src.content, '_shared', 'latest_show.html');
+      template = path.join(global.WF.src.templates, 'shows', 'latest.html');
+      outputFile = path.join(global.WF.src.content, '_shared', 'latest_show.html');
       wfTemplateHelper.renderTemplate(template, context, outputFile);
 
       // Note - use last updated instead of now to prevent feeds from being
@@ -105,12 +105,12 @@ function buildFeeds(buildType, callback) {
         rssPubDate: wfHelper.dateFormatRSS(lastUpdated),
         articles: articles
       };
-      template = path.join(GLOBAL.WF.src.templates, 'atom.xml');
-      outputFile = path.join(GLOBAL.WF.src.content, 'shows', 'atom.xml');
+      template = path.join(global.WF.src.templates, 'atom.xml');
+      outputFile = path.join(global.WF.src.content, 'shows', 'atom.xml');
       wfTemplateHelper.renderTemplate(template, context, outputFile);
 
-      template = path.join(GLOBAL.WF.src.templates, 'rss.xml');
-      outputFile = path.join(GLOBAL.WF.src.content, 'shows', 'rss.xml');
+      template = path.join(global.WF.src.templates, 'rss.xml');
+      outputFile = path.join(global.WF.src.content, 'shows', 'rss.xml');
       wfTemplateHelper.renderTemplate(template, context, outputFile);
       callback();
     }
